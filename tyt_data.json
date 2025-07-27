@@ -1,0 +1,863 @@
+[
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Ses Bilgisi",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 0,
+        "2023": 1,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Dil bilgisi",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 3,
+        "2023": 2,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Noktalama Isaretleri",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 2,
+        "2023": 2,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Yazim Kurallari",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 2,
+        "2023": 2,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Anlatim Bozuklugu",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Paragraf",
+      "soru_sayilari": {
+        "2021": 25,
+        "2022": 26,
+        "2023": 26,
+        "2024": 26,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Cumlede Anlam",
+      "soru_sayilari": {
+        "2021": 3,
+        "2022": 3,
+        "2023": 4,
+        "2024": 5,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Türkçe",
+      "konu": "Sozcukte Anlam",
+      "soru_sayilari": {
+        "2021": 5,
+        "2022": 4,
+        "2023": 3,
+        "2024": 5,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Temel Kavramlar",
+      "soru_sayilari": {
+        "2021": 3,
+        "2022": 3,
+        "2023": 2,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Sayi Basamaklari",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 1,
+        "2023": 1,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Bolme ve Bolunebilme",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "EBOB - EKOK",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Rasyonel Sayilar",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 2,
+        "2023": 2,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Basit Esitsizlikler",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 3,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Mutlak Deger",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Uslu Sayilar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Koklu Sayilar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Carpanlara Ayirma",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Oran Oranti",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Denklem Cozme",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 0,
+        "2023": 1,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Problemler",
+      "soru_sayilari": {
+        "2021": 11,
+        "2022": 13,
+        "2023": 10,
+        "2024": 11,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Kumeler - Kartezyen Carpim",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Mantik",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Fonksiyonlar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Polinomlar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Permutasyon ve Kombinasyon",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 1,
+        "2024": 3,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Olasilik",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Matematik",
+      "konu": "Veri - Istatistik",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Acilar ve Ucgenler",
+      "soru_sayilari": {
+        "2021": 4,
+        "2022": 4,
+        "2023": 5,
+        "2024": 5,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Cokgenler",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Ozel Dortgenler",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 2,
+        "2023": 2,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Cember ve Daire",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Analitik Geometri",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Geometri",
+      "konu": "Kati Cisimler",
+      "soru_sayilari": {
+        "2021": 2,
+        "2022": 2,
+        "2023": 2,
+        "2024": 2,
+        "2025": null,
+        "2026": null
+      }
+    },
+
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Fizik Bilimine Giris",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Madde ve Ozellikleri",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Sivilarin Kaldirma Kuvveti",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Basinc",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Isi, Sicaklik ve Genlesme",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Hareket ve Kuvvet",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Dinamik",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Is, Guc ve Enerji",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Elektrik Akimi ve Devreler",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 2,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Elektriksel Enerji ve Guc",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Manyetizma",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Dalgalar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Fizik",
+      "konu": "Optik",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 2,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Kimya Bilimi",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Atomun Yapisi",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Periyodik Tablo",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Maddenin Halleri",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Kimyasal Turler Arasi Etkilesimler",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Kimyasal Hesaplamalar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 0,
+        "2023": 0,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Kimyanin Temel Kanunlari",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 1,
+        "2023": 1,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Asit, Baz ve Tuz",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Karisimlar",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Kimya",
+      "konu": "Kimya Her Yerde",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Canlilarin Ortak Ozellikleri",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 1,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Canlilarin Temel Bilesenleri",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 0,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Hucre ve Organelleri",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Madde Gecisleri",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Canlilarin Siniflandirilmasi",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Hucre Bolunmeleri ve Ureme",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Kalitim",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Ekosistem Ekoloji",
+      "soru_sayilari": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": null,
+        "2026": null
+      }
+    },
+    {
+      "sınav_tipi": "TYT",
+      "ders": "Biyoloji",
+      "konu": "Bitkiler Biyolojisi",
+      "soru_sayilari": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": null,
+        "2026": null
+      }
+    }
+]

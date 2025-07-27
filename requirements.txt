@@ -1,0 +1,3 @@
+#Include needed libraries
+
+google-generativeai
