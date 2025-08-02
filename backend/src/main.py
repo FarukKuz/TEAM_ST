@@ -1,21 +1,17 @@
 # exam-assistant-app/backend/src/main.py
-from dotenv import load_dotenv # Yeni eklenen satır
-import os # Ortam değişkeni kontrolü için eklendi
+from dotenv import load_dotenv
+import os
 
-# Ortam değişkenlerini, diğer import'lardan ve app tanımından önce yükle.
-# Bu, tüm ayarların doğru bir şekilde okunmasını sağlar.
 load_dotenv()
 
 from fastapi import FastAPI
-from backend.src.api.curriculum_routes import router as curriculum_router
-from backend.src.database.database import create_db_and_tables
+# !!!!!! Render'a kök dizin olarak backend girdiğimiz için düzenledik. Local'de çalıştırırken düzeltilmeli!!!!!!
+from src.api.curriculum_routes import router as curriculum_router
+from src.database.database import create_db_and_tables
 
-# Veritabanı URL'inin ayarlandığından emin ol
 if not os.getenv("DATABASE_URL"):
     raise ValueError("DATABASE_URL ortam değişkeni ayarlanmamış!")
 
-# **ÖNEMLİ:** Bu satır, veritabanı tablolarını oluşturmak içindir.
-# Tablolarınız oluştuktan sonra bu satırı silebilir veya yorum satırı yapabilirsiniz.
 create_db_and_tables()
 
 app = FastAPI(
@@ -26,7 +22,6 @@ app = FastAPI(
 
 # API rotaları
 app.include_router(curriculum_router, prefix="/api/curriculum", tags=["Müfredat ve Etiketleme"])
-# Diğer rotalar buraya eklenecektir.
 
 @app.get("/")
 async def read_root():
