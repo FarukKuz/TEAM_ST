@@ -1,0 +1,442 @@
+:root {
+  --primary-color: #BDC4D4;
+  --secondary-color: #1C2E4A;
+  --text-color: #1B1C2D;
+  --bg-color: #F5F7FA;
+  --accent-color: #F7C319;
+  --light-text-color: #F5F5F5;
+  --paragraph-color: #494A4E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  z-index: 0;
+  pointer-events: none;
+  transition: width 0.3s ease;
+}
+
+.bg-top {
+  width: 100%;
+  height: 50vh;
+  background-color: var(--primary-color);
+}
+
+.bg-bottom {
+  width: 100%;
+  height: 50vh;
+  background-color: var(--bg-color);
+}
+
+.sidebar {
+  width: 20%;
+  background-color: var(--secondary-color);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.3s ease;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+header {
+  height: 60px;
+  width: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  /* Öğelerin alt kenara hizalanmasını sağlar */
+  justify-content: space-between;
+  position: relative;
+  /* Z-index için */
+  z-index: 10;
+  /* Header'ın içeriğinin üzerinde olması için daha yüksek bir z-index veriyoruz */
+}
+
+.leftmenu,
+.rightmenu {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0 20px;
+  align-items: end;
+}
+
+/* Her bir menü öğesi için genel stil */
+.menu-item-wrapper {
+  height: 60px;
+  /* Header yüksekliği ile aynı olmalı */
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  position: relative;
+  z-index: 15;
+  /* Varsayılan menü öğelerinin z-index'i */
+  transition: all 0.3s ease;
+  /* Tüm geçişler için kısayol */
+}
+
+/* İkonun içindeki lacivert yuvarlak */
+.icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  /* İkon çemberi boyutu */
+  height: 40px;
+  border-radius: 50%;
+  /* Tamamen yuvarlak */
+  background-color: transparent;
+  /* Varsayılan olarak şeffaf */
+  z-index: 2;
+  /* İkonun altında kalmalı */
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* İkonun kendisi */
+.icon-circle img {
+  /* img seçicisini icon-circle altında değiştirdik */
+  height: 24px;
+  /* İkon boyutu */
+  width: 24px;
+  object-fit: contain;
+  /* Aktif olmayan ikonlar için renk ayarı */
+  filter: brightness(0) saturate(100%) invert(10%) sepia(20%) saturate(1478%) hue-rotate(189deg) brightness(91%) contrast(93%);
+  /* Lacivert ikon */
+  transition: filter 0.3s ease;
+  z-index: 15;
+}
+
+
+/* Aktif menü öğesi stili (Beyaz yuvarlak) */
+.active-menu-item {
+  background-color: var(--bg-color);
+  /* Beyaz arka plan */
+  width: 50px;
+  height: 50px;
+  /* Header yüksekliği kadar */
+  border-top-left-radius: 30px;
+  /* Üst sol yuvarlak */
+  border-top-right-radius: 30px;
+  /* Üst sağ yuvarlak */
+  border-bottom-left-radius: 0;
+  /* Alt sol düz */
+  border-bottom-right-radius: 0;
+  /* Alt sağ düz */
+  z-index: 12;
+  /* En üstte olmalı */
+  align-self: flex-end;
+  /* Header'ın alt kenarına hizala */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Aktif menü öğesinin içindeki ikon çemberi */
+.active-menu-item .icon-circle {
+  background-color: var(--secondary-color);
+  /* Aktifken ikon çemberi lacivert olsun */
+}
+
+/* Aktif menü öğesinin içindeki ikonun rengi (beyaz olsun) */
+.active-menu-item .icon-circle img {
+  filter: brightness(0) invert(100%);
+  /* İkonu beyaz yapar */
+}
+
+/* Aktif menü öğesinin sağındaki ve solundaki dışa doğru açılan kavisler */
+.active-menu-item::before,
+.active-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  /* Aktif öğenin altından başla */
+  width: 25px;
+  /* Kavisin genişliği */
+  height: 25px;
+  /* Kavisin yüksekliği */
+  /* Header rengi */
+  z-index: 11;
+  /* Aktif öğenin hemen altında olmalı */
+  /* Kavisli şekli oluşturmak için */
+  transform-origin: bottom;
+  /* Dönüşümün alt kenardan başlaması için */
+}
+
+.active-menu-item::before {
+  left: -25px;
+  /* Sol tarafa yerleştir */
+  /* Kavisli şekil: sağ üstü tamamen yuvarla */
+  background: radial-gradient(circle at top left, transparent 70%, var(--bg-color) 71%);
+}
+
+.active-menu-item::after {
+  right: -25px;
+  /* Sağ tarafa yerleştir */
+  /* Kavisli şekil: sol üstü tamamen yuvarla */
+  background: radial-gradient(circle at top right, transparent 70%, var(--bg-color) 71%);
+}
+
+
+/* Diğer menü öğelerinin alt kenarlarını düzeltme */
+/* Bu kural, aktif olmayan öğeler için arka plan ve kenar yuvarlamaları kaldırdığı için gerekliyse tekrar eklenebilir. */
+/* Ancak genel .menu-item-wrapper'da bu ayarlar varsayılan olarak zaten transparent/0 olarak tanımlanacak. */
+
+/* Aktif öğenin hemen sağındaki ve solundaki öğelerin üst kenarlarını düzeltme (görseldeki keskin geçiş için) */
+.active-menu-item+.menu-item-wrapper {
+  border-top-left-radius: 0 !important;
+  /* Sağdaki öğenin sol üst köşesini düzelt */
+}
+
+.menu-item-wrapper:has(+ .active-menu-item) {
+  border-top-right-radius: 0 !important;
+  /* Soldaki öğenin sağ üst köşesini düzelt */
+}
+
+
+.back-icon,
+.sidebar-name,
+.profile-button,
+.sidebar-badges {
+  width: 100%;
+  height: 10%;
+}
+
+.sidebar-logo {
+  width: 100%;
+  height: 15%;
+}
+
+.sidebar-profile {
+  width: 100%;
+  height: 20%;
+}
+
+.sidebar-exam {
+  width: 100%;
+  height: 25%;
+}
+
+.back-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 20px;
+  transition: justify-content 0.3s ease, padding-right 0.3s ease;
+}
+
+.sidebar.collapsed .back-icon {
+  justify-content: center;
+  padding-right: 0;
+}
+
+.back-icon img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.sidebar-logo,
+.sidebar-profile,
+.sidebar-name,
+.sidebar-badges,
+.profile-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-logo img {
+  width: 80%;
+}
+
+.sidebar-profile img {
+  height: 90%;
+}
+
+.sidebar-name {
+  font-weight: bolder;
+  color: var(--light-text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-badges img {
+  height: 70%;
+}
+
+.sidebar-exam {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bars {
+  margin: 20px 0;
+  width: 100%;
+  max-width: 200px;
+}
+
+.progress-bars label {
+  color: var(--light-text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.progress {
+  background: var(--bg-color);
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.bar.tyt {
+  width: 60%;
+  background-color: var(--accent-color);
+  height: 100%;
+}
+
+.bar.ayt {
+  width: 30%;
+  background-color: var(--accent-color);
+  height: 100%;
+}
+
+.profile-button button {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--accent-color);
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.collapsed .sidebar-name,
+.sidebar.collapsed .sidebar-badges,
+.sidebar.collapsed .sidebar-exam,
+.sidebar.collapsed .profile-button,
+.sidebar.collapsed .sidebar-logo,
+.sidebar.collapsed .sidebar-profile {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: none;
+}
+
+.sidebar-name,
+.sidebar-badges,
+.sidebar-exam,
+.sidebar-profile,
+.sidebar-logo,
+.profile-button {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+
+.back-icon img {
+  transition: transform .25s ease;
+}
+
+main {
+  transition: width .3s ease;
+}
+
+.sidebar.collapsed+.sidebar-background {
+  width: 60px;
+}
+
+.collapsed-logo {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.2s;
+}
+
+.collapsed-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sidebar.collapsed .collapsed-logo {
+  display: block;
+  opacity: 1;
+}
+
+.sidebar:not(.collapsed) .collapsed-logo {
+  display: none;
+}
+
+.sidebar:not(.collapsed) .sidebar-logo {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+
+.sidebar.collapsed .sidebar-logo {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}

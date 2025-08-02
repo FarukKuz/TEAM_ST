@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorbi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="back-icon">
+        <img src="{{ url_for('static', filename='img/arrow_left_F5F5F5.png') }}" alt="Geri Ok">
+      </div>
+      <div class="sidebar-logo">
+        <img src="{{ url_for('static', filename='img/logo_nobg_light.png') }}" alt="Logo">
+      </div>
+      <div class="sidebar-profile">
+        <img src="{{ url_for('static', filename='img/anonymous.png') }}" alt="Profil Fotoğrafı">
+      </div>
+      <div class="sidebar-name">
+        <h1>İREM CEBECİ</h1>
+      </div>
+      <div class="sidebar-badges">
+        <img src="{{ url_for('static', filename='img/badge.png') }}" alt="Rozet">
+        <img src="{{ url_for('static', filename='img/badge.png') }}" alt="Rozet">
+        <img src="{{ url_for('static', filename='img/badge.png') }}" alt="Rozet">
+        <img src="{{ url_for('static', filename='img/badge.png') }}" alt="Rozet">
+        <img src="{{ url_for('static', filename='img/badge.png') }}" alt="Rozet">
+      </div>
+      <div class="sidebar-exam">
+        <div class="progress-bars">
+          <label>TYT</label>
+          <div class="progress">
+            <div class="bar tyt"></div>
+          </div>
+          <label>AYT</label>
+          <div class="progress">
+            <div class="bar ayt"></div>
+          </div>
+        </div>
+      </div>
+      <div class="collapsed-logo">
+        <img src="{{ url_for('static', filename='img/minilogo_light.png') }}" alt="Collapsed Logo">
+      </div>
+      <div class="profile-button">
+        <button>Profili Gör</button>
+      </div>
+    </aside>
+    <div class="sidebar-background">
+      <div class="bg-top"></div>
+      <div class="bg-bottom"></div>
+    </div>
+    <main>
+      <header>
+        <div class="leftmenu">
+          <a href="{{ url_for('anasayfa') }}">
+            <div class="menu-item-wrapper {% if request.path == '/' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/home_1C2E4A.png') }}" alt="Anasayfa">
+              </div>
+            </div>
+          </a>
+
+          <a href="{{ url_for('forum') }}">
+            <div class="menu-item-wrapper {% if request.path == '/forum' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/forum_1C2E4A.png') }}" alt="Forum">
+              </div>
+            </div>
+          </a>
+
+          <a href="{{ url_for('myquestions') }}">
+            <div class="menu-item-wrapper {% if request.path == '/myquestions' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/myquestions_1C2E4A.png') }}" alt="Sorularım">
+              </div>
+            </div>
+          </a>
+
+          <a href="{{ url_for('progress') }}">
+            <div class="menu-item-wrapper {% if request.path == '/progress' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/progress_1C2E4A.png') }}" alt="İlerleme">
+              </div>
+            </div>
+          </a>
+
+          <a href="{{ url_for('exams') }}">
+            <div class="menu-item-wrapper {% if request.path == '/exams' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/exams_1C2E4A.png') }}" alt="Deneme Sınavları">
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="rightmenu">
+          <a href="{{ url_for('mail') }}">
+            <div class="menu-item-wrapper {% if request.path == '/mail' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/mail_1C2E4A.png') }}" alt="Mail">
+              </div>
+            </div>
+          </a>
+
+          <a href="{{ url_for('settings') }}">
+            <div class="menu-item-wrapper {% if request.path == '/settings' %}active-menu-item{% endif %}">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/settings_1C2E4A.png') }}" alt="Ayarlar">
+              </div>
+            </div>
+          </a>
+
+          <a href="#">
+            <div class="menu-item-wrapper">
+              <div class="icon-circle">
+                <img src="{{ url_for('static', filename='img/quit_1C2E4A.png') }}" alt="Çıkış">
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </header>
+      <section></section>
+    </main>
+  </div>
+  <script>
+    const sidebar = document.querySelector(".sidebar");
+    const main = document.querySelector("main");
+    const trigger = document.querySelector(".back-icon");
+    const arrowImg = trigger.querySelector("img");
+    const leftArrow = "{{ url_for('static', filename='img/arrow_left_F5F5F5.png') }}";
+    const rightArrow = "{{ url_for('static', filename='img/arrow_right_F5F5F5.png') }}";
+    const collapsed = localStorage.getItem("sidebar-collapsed") === "true";
+    if (collapsed) {
+      sidebar.classList.add("collapsed");
+      main.style.width = "calc(100% - 60px)";
+      arrowImg.src = rightArrow;
+    } else {
+      sidebar.classList.remove("collapsed");
+      main.style.width = "80%";
+      arrowImg.src = leftArrow;
+    }
+    trigger.addEventListener("click", () => {
+      const isCollapsed = sidebar.classList.toggle("collapsed");
+      if (isCollapsed) {
+        main.style.width = "calc(100% - 60px)";
+        arrowImg.src = rightArrow;
+      } else {
+        main.style.width = "80%";
+        arrowImg.src = leftArrow;
+      }
+      localStorage.setItem("sidebar-collapsed", isCollapsed);
+    });
+  </script>
+</body>
+
+</html>
