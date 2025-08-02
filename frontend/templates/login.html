@@ -1,0 +1,12 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block content %}
+  <h1>Giriş Yap</h1>
+  <form method="POST">
+    <input type="email" name="email" placeholder="E-posta">
+    <input type="password" name="password" placeholder="Şifre">
+    <button type="submit">Giriş</button>
+  </form>
+{% endblock %}
