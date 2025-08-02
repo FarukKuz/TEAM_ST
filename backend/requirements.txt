@@ -1,0 +1,31 @@
+
+# python 3.11 sürümü kullanılıyor uyumluluk için
+
+# Ortam değişkenleri için
+python-dotenv==1.0.1
+
+# Web Framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+# Data Validation & Serialization (FastAPI'nin bağımlılığıdır)
+pydantic==2.7.1
+pydantic-settings==2.2.1
+
+# Google Gemini API
+google-generativeai==0.6.0
+
+# GÖRSEL İŞLEME KISMI İÇİN EKSİK OLAN KÜTÜPHANE
+# Resim işleme, açma ve yeniden boyutlandırma için gereklidir.
+Pillow==10.3.0
+
+# 1. SQL ORM (Object Relational Mapper)
+SQLAlchemy==2.0.30
+
+# 2. PostgreSQL Veritabanı Sürücüsü
+# Render'daki PostgreSQL veritabanına bağlanmak için gereklidir.
+psycopg2-binary==2.9.9
+
+# Test ve Geliştirme Araçları (Opsiyonel ama önerilir)
+# pytest==8.2.2
+# pytest-mock==3.14.0
