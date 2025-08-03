@@ -1,7 +1,9 @@
 import os
 
-# Gemini API Anahtarı - ortam değişkeni olarak revize edilecek.
-GEMINI_API_KEY = "AIzaSyCY39OmHpUqbM7Bg0Px9-tUJt1kTweHaHg"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY is not set in environment variables.")
 
 EXAM_DATA_FILEPATHS = {
     "TYT": os.path.join(os.path.dirname(__file__), "data", "tyt_data.json"),
@@ -10,5 +12,4 @@ EXAM_DATA_FILEPATHS = {
 
 GEMINI_MODEL_NAME = 'gemini-2.0-flash'
 
-#added vision mode
 GEMINI_VISION_MODEL_NAME = 'gemini-2.0-flash'
