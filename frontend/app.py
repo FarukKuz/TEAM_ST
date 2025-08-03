@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/home")
 def anasayfa():
     return render_template("main.html")
 
@@ -37,6 +37,18 @@ def base_auth():
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+@app.route("/verification")
+def verification():
+    return render_template("verification.html")
+
+@app.route("/exam_selection")
+def exam_selection():
+    return render_template("exam_selection.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

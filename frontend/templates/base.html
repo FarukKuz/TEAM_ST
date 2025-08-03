@@ -5,8 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorbi</title>
+  <title>{% block title %}Sorbi{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/browser_logo_light.png') }}">
 </head>
 
 <body>
@@ -56,11 +57,20 @@
     </div>
     <main>
       <header>
+        <div class="hamburger">
+          <img src="{{ url_for('static', filename='img/hamburger_F5F5F5.png') }}" alt="Menü">
+        </div>
+        <div class="mobile-logo">
+          <img src="{{ url_for('static', filename='img/logo_nobg_light.png') }}" alt="Logo">
+        </div>
+        <div class="mobile-quit">
+          <img src="{{ url_for('static', filename='img/quit_F5F5F5.png') }}" alt="Logo">
+        </div>
         <div class="leftmenu">
           <a href="{{ url_for('anasayfa') }}">
-            <div class="menu-item-wrapper {% if request.path == '/' %}active-menu-item{% endif %}">
+            <div class="menu-item-wrapper {% if request.path == '/home' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/home_1C2E4A.png') }}" alt="Anasayfa">
+                <img src="{{ url_for('static', filename='img/home_F5F5F5.png') }}" alt="Anasayfa">
               </div>
             </div>
           </a>
@@ -68,7 +78,7 @@
           <a href="{{ url_for('forum') }}">
             <div class="menu-item-wrapper {% if request.path == '/forum' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/forum_1C2E4A.png') }}" alt="Forum">
+                <img src="{{ url_for('static', filename='img/forum_F5F5F5.png') }}" alt="Forum">
               </div>
             </div>
           </a>
@@ -76,7 +86,7 @@
           <a href="{{ url_for('myquestions') }}">
             <div class="menu-item-wrapper {% if request.path == '/myquestions' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/myquestions_1C2E4A.png') }}" alt="Sorularım">
+                <img src="{{ url_for('static', filename='img/myquestions_F5F5F5.png') }}" alt="Sorularım">
               </div>
             </div>
           </a>
@@ -84,7 +94,7 @@
           <a href="{{ url_for('progress') }}">
             <div class="menu-item-wrapper {% if request.path == '/progress' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/progress_1C2E4A.png') }}" alt="İlerleme">
+                <img src="{{ url_for('static', filename='img/progress_F5F5F5.png') }}" alt="İlerleme">
               </div>
             </div>
           </a>
@@ -92,7 +102,7 @@
           <a href="{{ url_for('exams') }}">
             <div class="menu-item-wrapper {% if request.path == '/exams' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/exams_1C2E4A.png') }}" alt="Deneme Sınavları">
+                <img src="{{ url_for('static', filename='img/exams_F5F5F5.png') }}" alt="Deneme Sınavları">
               </div>
             </div>
           </a>
@@ -101,7 +111,7 @@
           <a href="{{ url_for('mail') }}">
             <div class="menu-item-wrapper {% if request.path == '/mail' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/mail_1C2E4A.png') }}" alt="Mail">
+                <img src="{{ url_for('static', filename='img/mail_F5F5F5.png') }}" alt="Mail">
               </div>
             </div>
           </a>
@@ -109,7 +119,7 @@
           <a href="{{ url_for('settings') }}">
             <div class="menu-item-wrapper {% if request.path == '/settings' %}active-menu-item{% endif %}">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/settings_1C2E4A.png') }}" alt="Ayarlar">
+                <img src="{{ url_for('static', filename='img/settings_F5F5F5.png') }}" alt="Ayarlar">
               </div>
             </div>
           </a>
@@ -117,17 +127,27 @@
           <a href="#">
             <div class="menu-item-wrapper">
               <div class="icon-circle">
-                <img src="{{ url_for('static', filename='img/quit_1C2E4A.png') }}" alt="Çıkış">
+                <img src="{{ url_for('static', filename='img/quit_F5F5F5.png') }}" alt="Çıkış">
               </div>
             </div>
           </a>
         </div>
 
       </header>
+      <div class="mobile-menu">
+        <a href="{{ url_for('anasayfa') }}">Anasayfa</a>
+        <a href="{{ url_for('forum') }}">Forum</a>
+        <a href="{{ url_for('myquestions') }}">Sorularım</a>
+        <a href="{{ url_for('progress') }}">İlerleme</a>
+        <a href="{{ url_for('exams') }}">Deneme Sınavları</a>
+        <a href="{{ url_for('mail') }}">Mail</a>
+        <a href="{{ url_for('settings') }}">Ayarlar</a>
+      </div>
       <section></section>
     </main>
   </div>
   <script>
+    // Sidebar geri butonu
     const sidebar = document.querySelector(".sidebar");
     const main = document.querySelector("main");
     const trigger = document.querySelector(".back-icon");
@@ -135,6 +155,7 @@
     const leftArrow = "{{ url_for('static', filename='img/arrow_left_F5F5F5.png') }}";
     const rightArrow = "{{ url_for('static', filename='img/arrow_right_F5F5F5.png') }}";
     const collapsed = localStorage.getItem("sidebar-collapsed") === "true";
+
     if (collapsed) {
       sidebar.classList.add("collapsed");
       main.style.width = "calc(100% - 60px)";
@@ -144,6 +165,7 @@
       main.style.width = "80%";
       arrowImg.src = leftArrow;
     }
+
     trigger.addEventListener("click", () => {
       const isCollapsed = sidebar.classList.toggle("collapsed");
       if (isCollapsed) {
@@ -155,7 +177,45 @@
       }
       localStorage.setItem("sidebar-collapsed", isCollapsed);
     });
+
+    // 🍔 Hamburger menüyü aç/kapat
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.querySelector('.hamburger');
+      const menu = document.querySelector('.mobile-menu');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          const isOpen = menu.style.display === 'block';
+          menu.style.display = isOpen ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.style.display = 'none';
+          }
+        });
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.mobile-menu');
+
+    if (hamburger && menu) {
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+
+      // Menü dışına tıklanırsa menüyü kapat
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+          menu.classList.remove('open');
+        }
+      });
+    }
+  });
   </script>
+
 </body>
 
 </html>

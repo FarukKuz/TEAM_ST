@@ -11,8 +11,8 @@
 <body>
   <div class="auth-container">
     <div class="sidebox">
-      <a href="{{ url_for('login') }}" class="{% if request.path == '/login' %}active{% endif %}">GİRİŞ YAP</a>
-      <a href="{{ url_for('signup') }}" class="{% if request.path == '/signup' %}active{% endif %}">KAYIT OL</a>
+      <a href="{{ url_for('verification') }}" class="{% if request.path == '/verification' %}active{% endif %}">DOĞRULAMA</a>
+      <a href="{{ url_for('exam_selection') }}" class="{% if request.path == '/exam_selection' %}active{% endif %}">SINAV SEÇİMİ</a>
     </div>
     <div class="auth-content">
 
