@@ -1,12 +1,13 @@
-# exam-assistant-app/ai_core/llm_service.py
 import google.generativeai as genai
-from PIL import Image # Pillow kütüphanesinden Image import edildi
-import io # Bellekte görsel verisi işlemek için
+from PIL import Image
+import io
+import os
 
-from ai_core.config import GEMINI_API_KEY, GEMINI_MODEL_NAME, GEMINI_VISION_MODEL_NAME
+from ai_core.config import GEMINI_MODEL_NAME, GEMINI_VISION_MODEL_NAME
 from ai_core.utils import clean_gemini_response
 
-# Gemini API'sini yapılandır
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
 genai.configure(api_key=GEMINI_API_KEY)
 
 LLM_MODEL = genai.GenerativeModel(GEMINI_MODEL_NAME)
@@ -54,24 +55,9 @@ def get_llm_response_for_topic(question_text: str, parent_course: str, available
         return f"Gemini API Hatası (Konu belirleme): {e}"
 
 def get_gemini_vision_response(image_bytes: bytes, text_prompt: str = "") -> str:
-    """
-    Gemini Vision modeline bir görsel ve isteğe bağlı bir metin sorgusu gönderir
-    ve modelin görselle ilgili metin yanıtını döndürür.
-
-    Args:
-        image_bytes: Görselin bayt dizisi (örneğin, bir dosya okunduğunda elde edilen).
-        text_prompt: Görselle birlikte gönderilecek metin sorgusu (örn: "Bu resimde ne var?",
-                     "Bu matematik problemi ne ile ilgili?", "Soruyu çöz.").
-
-    Returns:
-        Gemini'den gelen metin yanıtı veya bir hata mesajı.
-    """
     try:
-        # Görselin MIME tipini belirle. Genellikle JPEG veya PNG kullanılır.
-        # Basitlik için burada sabit 'image/jpeg' kullanıldı.
-        # Gerçek uygulamada, dosya uzantısına göre dinamik olarak belirlenebilir.
         image_part = {
-            'mime_type': 'image/jpeg', # Yüklediğin görselin gerçek MIME tipini burada belirtmelisin (png, jpeg vb.)
+            'mime_type': 'image/png', # Yüklediğin görselin tipi
             'data': image_bytes
         }
 
