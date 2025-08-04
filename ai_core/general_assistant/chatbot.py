@@ -1,125 +1,105 @@
-# exam-assistant-app/ai_core/general_assistant/chatbot.py
+import os
+import io # Bu kütüphaneyi ekliyoruz, çünkü dosya baytlarını okumak için gerekli.
+from ai_core.exam_data_loader import get_cached_exam_data
+from ai_core.llm_service import get_llm_response_for_course, get_llm_response_for_topic, get_gemini_vision_response
 
-import google.generativeai as genai
-from PIL import Image # Pillow kütüphanesinden Image import edildi
-import io # Bellekte görsel verisi işlemek için
-import os # Dosya yolu işlemleri için
 
-from ai_core.config import GEMINI_API_KEY, GEMINI_MODEL_NAME, EXAM_DATA_FILEPATHS
-from ai_core.topic_tagging_service import tag_question # Soru etiketleme fonksiyonumuz
-# LLM_MODEL ve VISION_LLM_MODEL doğrudan llm_service'ten import ediliyor
-from ai_core.llm_service import LLM_MODEL, VISION_LLM_MODEL, get_gemini_vision_response # get_gemini_vision_response de eklendi
-
-# Gemini API'sini yapılandır (emin olmak için burada da konfigüre edilebilir)
-genai.configure(api_key=GEMINI_API_KEY)
-
-def get_assistant_response(user_query: str, image_path: str = None) -> str:
+def tag_question(question_text: str, exam_type: str) -> dict:
     """
-    Kullanıcı sorgusuna genel bir yanıt üretir ve soruyu etiketlemeye çalışır.
-    İsteğe bağlı olarak bir görsel dosya yolu da alabilir.
-    """
-    detected_course = "UNKNOWN"
-    detected_topic = "UNKNOWN"
-    tag_error = None
-    assistant_reply_parts = [] # Yanıt parçalarını bir liste olarak tutacağız
-    text_for_tagging = user_query # Etiketleme için varsayılan metin
+    Tags a question with its course and topic based on the exam type.
 
-    # 1. Görsel varsa, Gemini Vision ile analiz et
-    if image_path:
-        if not os.path.exists(image_path):
-            return f"Hata: Belirtilen görsel yolu bulunamadı: {image_path}"
+    Args:
+        question_text: The text of the question.
+        exam_type: The type of the exam (e.g., "TYT").
+
+    Returns:
+        A dictionary containing the course, topic, and any potential errors.
+    """
+    exam_data = get_cached_exam_data(exam_type)
+
+    if not exam_data:
+        return {"course": "UNKNOWN", "topic": "UNKNOWN", "error": f"'{exam_type}' exam data could not be loaded. Please check the JSON file."}
+
+    available_courses = list(exam_data.keys())
+
+    # 1. Determine the course
+    course = get_llm_response_for_course(question_text, available_courses)
+    if course == "UNKNOWN":
+        return {"course": "UNKNOWN", "topic": "UNKNOWN", "error": "Could not determine the course."}
+
+    # 2. Get the topic list for the determined course
+    topic_list_for_course = exam_data.get(course)
+    if not topic_list_for_course:
+        return {"course": course, "topic": "UNKNOWN", "error": f"No topic list found for the '{course}' course."}
+
+    # 3. Determine the topic within the specific course's topics
+    topic = get_llm_response_for_topic(question_text, course, topic_list_for_course)
+    if topic == "UNKNOWN":
+        return {"course": course, "topic": "UNKNOWN", "error": "Could not determine the topic."}
+
+    return {"course": course, "topic": topic}
+
+
+def process_questions_from_directory(directory_path: str, exam_type: str) -> None:
+    """
+    Reads question files from a directory, tags them, and prints the results.
+    This version uses Gemini Vision for image files.
+    """
+    print(f"--- Processing questions from '{directory_path}' directory ---")
+    
+    try:
+        filenames = sorted(os.listdir(directory_path))
+    except FileNotFoundError:
+        print(f"Error: Directory not found at '{directory_path}'.")
+        return
+
+    for filename in filenames:
+        file_path = os.path.join(directory_path, filename)
         
+        if not os.path.isfile(file_path) or filename.startswith('.'):
+            continue
+
+        question_text = ""
+        file_extension = os.path.splitext(filename)[1].lower()
+
+        print(f"\n--- Processing file: {filename} ---")
+
         try:
-            with open(image_path, 'rb') as f:
-                image_bytes = f.read()
+            if file_extension in ['.png', '.jpg', '.jpeg']:
+                # Gemini Vision modelini kullanarak görseldeki metni çıkar
+                with open(file_path, 'rb') as f:
+                    image_bytes = f.read()
+
+                # Gemini Vision'a sadece görseli gönderip metin çıkarmasını istiyoruz
+                # Bunun için prompt'u uygun şekilde düzenleyebiliriz.
+                # Örneğin, "Görseldeki soruyu metin olarak yaz."
+                vision_prompt = "Görseldeki tüm metni, özellikle de sorunun kendisini tam olarak çıkar."
+                vision_response_text = get_gemini_vision_response(image_bytes, vision_prompt)
+
+                if not vision_response_text.strip():
+                    print("Warning: Could not extract text from the image using Gemini Vision, skipping.")
+                    continue
+                
+                question_text = vision_response_text
+            else: # Diğer dosyaları metin olarak oku
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    question_text = file.read().strip()
+                    if not question_text:
+                        print("Warning: File is empty, skipping.")
+                        continue
             
-            # Görsel analizini yap
-            vision_response_text = get_gemini_vision_response(image_bytes, user_query)
-            assistant_reply_parts.append(f"Görsel analizi: {vision_response_text}")
-
-            # Eğer Gemini Vision'dan anlamlı bir metin geldiyse, etiketlemede onu kullan
-            if vision_response_text and "hata" not in vision_response_text.lower():
-                # Kullanıcının metin sorgusu da varsa, ikisini birleştirerek etiketle
-                text_for_tagging = vision_response_text + (" " + user_query if user_query else "")
+            tagged_info = tag_question(question_text, exam_type)
+            print(f"Tag: Course: {tagged_info['course']}, Topic: {tagged_info['topic']}")
             
+            if "error" in tagged_info:
+                print(f"  Error: {tagged_info['error']}")
+
         except Exception as e:
-            assistant_reply_parts.append(f"Görsel işlenirken bir hata oluştu: {e}")
-            tag_error = f"Görsel işleme hatası: {e}"
+            print(f"Error processing '{filename}': {e}")
 
-    # Kullanıcı belirlemeli
-    default_exam_type = "TYT"
-    # Kullanıcı sorgusunda sınav tipi belirtilmiş mi kontrol et (basitçe)
-    for exam_type_key in EXAM_DATA_FILEPATHS.keys():
-        if exam_type_key.lower() in user_query.lower():
-            default_exam_type = exam_type_key
-            break
 
-    tags_result = tag_question(text_for_tagging, default_exam_type)
-    detected_course = tags_result.get("course", "UNKNOWN")
-    detected_topic = tags_result.get("topic", "UNKNOWN")
-    tag_error = tags_result.get("error") if tag_error else tags_result.get("error") # Önceki hatayı koru veya yeni hatayı al
-
-    # 3. Genel bir asistan yanıtı oluştur (metin tabanlı Gemini kullanarak)
-    # Eğer asistan yanıtı görsel analizinden gelmediyse, genel metin yanıtı oluştur
-    if not assistant_reply_parts: # Eğer hiç yanıt yoksa
-        general_prompt = (
-            f"Kullanıcının aşağıdaki sorusuna detaylı ve yardımcı bir yanıt ver. "
-            f"Sorunun konusu ve dersi tespit edildiyse, cevabına bu bilgiyi de ekleyebilirsin.\n\n"
-            f"Tespit Edilen Ders: {detected_course}\n"
-            f"Tespit Edilen Konu: {detected_topic}\n"
-            f"Kullanıcı Sorusu: {user_query}"
-        )
-        try:
-            response = LLM_MODEL.generate_content(general_prompt)
-            assistant_reply_parts.append(response.text)
-        except Exception as e:
-            assistant_reply_parts.append(f"Üzgünüm, şu an bir yanıt oluşturamıyorum. Bir sorun oluştu: {e}")
-
-    # Etiketleme bilgisini yanıta ekle
-    tag_info = ""
-    if detected_course != "UNKNOWN" or detected_topic != "UNKNOWN":
-        tag_info = f"\n\n(Bu soruyu '{detected_course}' dersinin '{detected_topic}' konusuna ait olarak etiketledim.)"
-    elif tag_error:
-        tag_info = f"\n\n(Sorunun dersini/konusunu belirlerken bir sorun oluştu: {tag_error})"
-
-    return "\n".join(assistant_reply_parts) + tag_info
-
-def start_chatbot_terminal_interface():
-    """
-    Terminalden kullanıcı ile etkileşime giren sohbet botu arayüzünü başlatır.
-    Görsel yolu girişi için komutları destekler.
-    """
-    print("Merhaba! Ben senin sınav asistanınım. Hangi konuda yardıma ihtiyacın var?")
-    print("Çıkmak için 'çıkış' yazabilirsin.")
-    print("Görsel göndermek için 'görsel: [dosya_yolu] [metin_sorgusu]' formatını kullan.")
-    print("Örnek: görsel: /Users/faruk/Desktop/soru.jpg Bu görseldeki matematik problemi nedir?")
-
-    while True:
-        user_input = input("\nSen: ")
-        if user_input.lower() in ["çıkış", "exit", "quit"]:
-            print("Görüşmek üzere!")
-            break
-
-        image_path = None
-        text_query = user_input
-
-        # Görsel girişi mi var kontrol et
-        if user_input.lower().startswith("görsel:"):
-            parts = user_input[len("görsel:"):].strip().split(" ", 1)
-            if len(parts) >= 1:
-                image_path = parts[0] # İlk kısım dosya yolu
-                if len(parts) > 1:
-                    text_query = parts[1] # İkinci kısım metin sorgusu
-                else:
-                    text_query = "" # Sadece görsel var, metin yok
-            else:
-                print("Hata: Görsel formatı yanlış. 'görsel: [dosya_yolu] [metin_sorgusu]' şeklinde olmalı.")
-                continue
-
-        print("Asistan düşünüyor...")
-        response = get_assistant_response(text_query, image_path)
-        print(f"Asistan: {response}")
-
-# Bu dosya doğrudan çalıştırıldığında sohbet arayüzünü başlatır
+# Main execution block
 if __name__ == "__main__":
-    start_chatbot_terminal_interface()
+    questions_folder = os.path.expanduser('~/Desktop/sorbi-sorular')
+    exam_type_to_process = "TYT"
+    process_questions_from_directory(questions_folder, exam_type_to_process)

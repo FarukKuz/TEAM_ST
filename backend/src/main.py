@@ -1,8 +1,6 @@
 from dotenv import load_dotenv
 import os
 import logging
-from ai_core.config import DATABASE_URL
-from ai_core.config import GEMINI_API_KEY
 from fastapi import FastAPI, HTTPException
 
 # !!!!!! Render'a kök dizin olarak backend girdiğimiz için düzenledik. Local'de çalıştırırken düzeltilmeli!!!!!!
